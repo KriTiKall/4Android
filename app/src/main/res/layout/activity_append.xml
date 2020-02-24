@@ -7,7 +7,7 @@
     tools:context=".AppendActivity">
 
     <TextView
-        android:id="@+id/edt_header"
+        android:id="@+id/label_header_append"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/a_append_header"
@@ -20,20 +20,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_append"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/a_append_button"
         android:textAllCaps="false"
         android:layout_marginBottom="40dp"
 
-        app:layout_constraintLeft_toLeftOf="@+id/editText_word"
+        app:layout_constraintLeft_toLeftOf="@+id/edit_text_word_append"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edt_header"
+        app:layout_constraintTop_toTopOf="@+id/label_header_append"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <EditText
-        android:id="@+id/editText_word"
+        android:id="@+id/edit_text_word_append"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <EditText
-        android:id="@+id/editText_translate"
+        android:id="@+id/edit_text_translate_append"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -61,12 +61,13 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_of_possible_translation_append"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         android:visibility="invisible"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/button_append"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
