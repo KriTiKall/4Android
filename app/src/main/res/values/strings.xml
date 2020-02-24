@@ -1,0 +1,11 @@
+<resources>
+    <string name="a_append_header">Append your word</string>
+    <string name="a_append_button">Append</string>
+
+    <string name="a_change_header">Change your word</string>
+    <string name="a_change_button">Change</string>
+
+    <string name="edt_word">Word</string>
+    <string name="edt_translate">Translate</string>
+
+</resources>
