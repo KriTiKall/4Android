@@ -1,4 +1,4 @@
-package com.example.android_translator;
+package com.example.android_translator.presentation.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,20 +8,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.android_translator.R;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ChangeActivity extends AppCompatActivity {
     @BindView(R.id.label_header_change)
-    TextView header;
+    private TextView header;
     @BindView(R.id.edit_text_word_change)
-    EditText word;
+    private EditText word;
     @BindView(R.id.edit_text_translate_change)
-    EditText translate;
+    private EditText translate;
     @BindView(R.id.edit_text_translate_change)
-    Button buttonChange;
+    private Button buttonChange;
     @BindView(R.id.list_of_possible_translation_change)
-    RecyclerView listChange;
+    private RecyclerView listChange;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
