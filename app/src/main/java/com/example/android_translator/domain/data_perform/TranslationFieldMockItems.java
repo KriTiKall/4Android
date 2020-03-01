@@ -1,4 +1,4 @@
-package com.example.android_translator.data_perform;
+package com.example.android_translator.domain.data_perform;
 
 import java.util.ArrayList;
 import java.util.List;

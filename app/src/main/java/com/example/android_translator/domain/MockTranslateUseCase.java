@@ -1,6 +1,6 @@
 package com.example.android_translator.domain;
 
-import com.example.android_translator.data_perform.TranslationField;
+import com.example.android_translator.domain.data_perform.TranslationField;
 
 public class MockTranslateUseCase implements TranslateUseCase {
 

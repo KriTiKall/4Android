@@ -15,15 +15,15 @@ import butterknife.ButterKnife;
 
 public class AppendActivity extends AppCompatActivity {
     @BindView(R.id.label_header_append)
-    private TextView header;
+    TextView header;
     @BindView(R.id.edit_text_word_append)
-    private EditText word;
+    EditText word;
     @BindView(R.id.edit_text_translate_append)
-    private EditText translate;
-    @BindView(R.id.edit_text_translate_append)
-    private Button buttonAppend;
+    EditText translate;
+    @BindView(R.id.button_append)
+    Button buttonAppend;
     @BindView(R.id.list_of_possible_translation_append)
-    private RecyclerView listAppend;
+    RecyclerView listAppend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

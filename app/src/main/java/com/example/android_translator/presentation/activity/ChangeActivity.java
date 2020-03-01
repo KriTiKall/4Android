@@ -15,15 +15,15 @@ import butterknife.ButterKnife;
 
 public class ChangeActivity extends AppCompatActivity {
     @BindView(R.id.label_header_change)
-    private TextView header;
+    TextView header;
     @BindView(R.id.edit_text_word_change)
-    private EditText word;
+    EditText word;
     @BindView(R.id.edit_text_translate_change)
-    private EditText translate;
-    @BindView(R.id.edit_text_translate_change)
-    private Button buttonChange;
+    EditText translate;
+    @BindView(R.id.button_change)
+    Button buttonChange;
     @BindView(R.id.list_of_possible_translation_change)
-    private RecyclerView listChange;
+    RecyclerView listChange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
