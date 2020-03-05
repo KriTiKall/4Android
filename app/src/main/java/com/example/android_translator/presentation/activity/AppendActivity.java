@@ -1,6 +1,5 @@
 package com.example.android_translator.presentation.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -13,13 +12,13 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.android_translator.R;
 import com.example.android_translator.presentation.presenters.AppendActivityPresenter;
-import com.example.android_translator.presentation.render.AppendView;
-import com.example.android_translator.presentation.render.MainView;
+import com.example.android_translator.presentation.view.AppendView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AppendActivity extends MvpAppCompatActivity implements AppendView {
+
     @BindView(R.id.label_header_append)
     TextView header;
     @BindView(R.id.edit_text_word_append)

@@ -1,27 +1,26 @@
 package com.example.android_translator.presentation.activity;
 
+import android.os.Bundle;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.example.android_translator.R;
+import com.example.android_translator.domain.data_perform.TranslationField;
+import com.example.android_translator.presentation.presenters.MainActivityPresenter;
+import com.example.android_translator.presentation.render.TranslateRender;
+import com.example.android_translator.presentation.view.MainView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import com.example.android_translator.R;
-import com.example.android_translator.domain.data_perform.TranslationField;
-import com.example.android_translator.domain.MockTranslateUseCase;
-import com.example.android_translator.presentation.presenters.MainActivityPresenter;
-import com.example.android_translator.presentation.render.MainView;
-import com.example.android_translator.presentation.render.TranslateRender;
-
 public class MainActivity extends MvpAppCompatActivity implements MainView {
+
     @BindView(R.id.main_recycler)
     RecyclerView listTranslation;
 
@@ -30,7 +29,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     @ProvidePresenter
     MainActivityPresenter providePresent() {
-        return new MainActivityPresenter(new MockTranslateUseCase());
+        return new MainActivityPresenter();
     }
 
     @Override

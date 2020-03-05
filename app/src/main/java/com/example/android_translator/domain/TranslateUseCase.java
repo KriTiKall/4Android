@@ -4,5 +4,5 @@ import com.example.android_translator.domain.data_perform.TranslationField;
 
 public interface TranslateUseCase {
 
-    public TranslationField translate(String word); // enum Leng
+    TranslationField translate(String word); // enum Lang
 }

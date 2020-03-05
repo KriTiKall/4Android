@@ -1,17 +1,23 @@
 package com.example.android_translator.domain.data_perform;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class TranslationField {
+
+    @PrimaryKey
     private int id;
     private String word;
     private String translation;
 
-    public TranslationField(int id, String word, String translation){
+    public TranslationField(int id, String word, String translation) {
         this.id = id;
         this.word = word;
         this.translation = translation;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 

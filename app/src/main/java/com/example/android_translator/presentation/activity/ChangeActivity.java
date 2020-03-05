@@ -5,21 +5,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.android_translator.R;
-import com.example.android_translator.presentation.presenters.AppendActivityPresenter;
 import com.example.android_translator.presentation.presenters.ChangeActivityPresenter;
-import com.example.android_translator.presentation.render.ChangeView;
+import com.example.android_translator.presentation.view.ChangeView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ChangeActivity extends MvpAppCompatActivity implements ChangeView {
+
     @BindView(R.id.label_header_change)
     TextView header;
     @BindView(R.id.edit_text_word_change)

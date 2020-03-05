@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TranslateRender extends RecyclerView.Adapter<TranslateRender.TranslateViewHolder> {
+
     private List<TranslationField> data;
 
     @NonNull
