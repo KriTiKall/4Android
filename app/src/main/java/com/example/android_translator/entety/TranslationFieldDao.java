@@ -18,6 +18,9 @@ public interface TranslationFieldDao {
     @Query("SELECT * FROM translationField WHERE id = :id")
     TranslationField getById(long id);
 
+    @Query("SELECT id FROM translationField")
+    List<Integer> getAllId();
+
     @Insert
     void insert(TranslationField translation);
 
