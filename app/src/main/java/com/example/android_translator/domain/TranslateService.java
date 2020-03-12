@@ -11,7 +11,7 @@ public interface TranslateService {
     String BASE_URL = "https://translate.yandex.net/api/v1.5/tr.json/translate";
 
     @POST("key={key}&text={text}&lang={flang}-{slang}&options=1")
-    Observable<TranslationField> getTranslation(@Path("key") String key,
+    public Observable<TranslationField> getTranslation(@Path("key") String key,
                                              @Path("text") String text,
                                              @Path("flang") String flang,
                                              @Path("slang") String slang);

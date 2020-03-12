@@ -26,6 +26,7 @@ class Core {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         translateService = retrofit.create(TranslateService.class);
     }
 

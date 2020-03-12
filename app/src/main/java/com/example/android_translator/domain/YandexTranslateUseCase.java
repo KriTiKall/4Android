@@ -7,10 +7,10 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 import io.reactivex.Observable;
-import okhttp3.Interceptor;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -26,15 +26,18 @@ import static com.example.android_translator.domain.TranslateService.BASE_URL;
  *  1. https://habr.com/ru/post/428736/
  *  2. https://habr.com/ru/post/305478/
  *  intrasting link -> https://www.journaldev.com/20433/android-rxjava-retrofit
+ *
+ * Look entety.Core
  */
 public class YandexTranslateUseCase implements TranslateUseCase {
 
-    private YandexTranslateObject object;
+    private YandexTranslateRefac object;
     private OkHttpClient client;
+
 
     public YandexTranslateUseCase() {
         client = new OkHttpClient();
-        object = new YandexTranslateObject();
+        object = new YandexTranslateRefac();
     }
 
     @Override
@@ -49,7 +52,7 @@ public class YandexTranslateUseCase implements TranslateUseCase {
             return null;
         }
 
-        return new TranslationField(1, translation, word);
+        return new TranslationField(1, translation, Arrays.asList(word));
     }
 
     private String getJSON(String word) { //TODO append enum lang
@@ -85,6 +88,9 @@ public class YandexTranslateUseCase implements TranslateUseCase {
 
         TranslateService service = retrofit.create(TranslateService.class);
         Observable<TranslationField> translationFieldObservable = service.getTranslation(object.getApiKey(), word, fromLang, toLang);
+    }
 
+    public TranslateService getService(){
+        return null;
     }
 }

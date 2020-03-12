@@ -17,6 +17,11 @@ import com.example.android_translator.presentation.view.AppendView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * RxBind
+ * cool link arch -> https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started
+ */
+
 public class AppendActivity extends MvpAppCompatActivity implements AppendView {
 
     @BindView(R.id.label_header_append)

@@ -6,4 +6,16 @@ import com.example.android_translator.presentation.view.AppendView;
 
 @InjectViewState
 public class AppendActivityPresenter extends MvpPresenter<AppendView>  {
+
+    public void ondeAttach(){
+
+    }
+
+    public void onAttach(){
+
+    }
+
+    public void clean(){
+
+    }
 }
