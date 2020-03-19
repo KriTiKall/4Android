@@ -1,6 +1,7 @@
 package com.example.android_translator.domain.data_perform;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TranslationFieldMockItems implements MockItems<TranslationField> {
@@ -15,7 +16,7 @@ public class TranslationFieldMockItems implements MockItems<TranslationField> {
     public List<TranslationField> getList(int length) {
         List<TranslationField> list = new ArrayList();
         for (int i = 0; i < length; i++)
-            list.add(new TranslationField(i, "concurrency", "совпадения"));
+            list.add(new TranslationField(i, "concurrency", Arrays.asList("совпадения")));
         return list;
     }
 }

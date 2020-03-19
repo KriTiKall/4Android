@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 @Entity
 public class TranslationField {
 
@@ -12,24 +14,24 @@ public class TranslationField {
     private int id;
     private String word;
     @SerializedName("text")
-    private String translation;
+    private List<String> translations;
 
-    public TranslationField(int id, String word, String translation) {
+    public TranslationField(int id, String word, List<String> translations) {
         this.id = id;
         this.word = word;
-        this.translation = translation;
+        this.translations = translations;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getTranslation() {
-        return translation;
+    public List<String> getTranslations() {
+        return translations;
     }
 
-    public void setTranslation(String translation) {
-        this.translation = translation;
+    public void setTranslations(List<String> translations) {
+        this.translations = translations;
     }
 
     public String getWord() {
