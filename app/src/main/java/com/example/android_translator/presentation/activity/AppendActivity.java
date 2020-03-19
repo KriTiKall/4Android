@@ -16,6 +16,7 @@ import com.example.android_translator.presentation.view.AppendView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
 
 /**
  * RxBind
@@ -48,5 +49,10 @@ public class AppendActivity extends MvpAppCompatActivity implements AppendView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_append);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    public Observable<String> getTextFromEditText() {
+        return RxTextView.textChanges(word);
     }
 }
