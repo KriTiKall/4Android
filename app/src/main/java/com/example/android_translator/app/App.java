@@ -4,7 +4,7 @@ import android.app.Application;
 
 import androidx.room.Room;
 
-import com.example.android_translator.entety.AppDataBase;
+import com.example.android_translator.entety.dao.AppDataBase;
 
 public class App extends Application {
 

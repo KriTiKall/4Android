@@ -2,8 +2,8 @@ package com.example.android_translator.presentation.presenters;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.example.android_translator.domain.MockTranslateUseCase;
-import com.example.android_translator.domain.TranslateUseCase;
+import com.example.android_translator.domain.deprecated.MockTranslateUseCase;
+import com.example.android_translator.domain.deprecated.TranslateUseCase;
 import com.example.android_translator.domain.data_perform.TranslateFieldHandMockItems;
 import com.example.android_translator.domain.data_perform.TranslationField;
 import com.example.android_translator.presentation.view.MainView;
