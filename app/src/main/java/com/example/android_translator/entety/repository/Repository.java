@@ -1,6 +1,6 @@
 package com.example.android_translator.entety.repository;
 
-import io.reactivex.Single;
+import rx.Single;
 
 public interface Repository<T> {
     public Single<T> all(String text);

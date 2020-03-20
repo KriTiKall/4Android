@@ -6,7 +6,7 @@ import com.example.android_translator.domain.mappers.YandexTranslationMapper;
 import com.example.android_translator.entety.essences.YandexTranslationJson;
 import com.example.android_translator.entety.repository.Repository;
 import com.example.android_translator.entety.repository.YandexTranslationRepository;
-import io.reactivex.Single;
+import rx.Single;
 
 public class YandexTranslationUseCaseImp implements YandexTransletationUseCase {
 

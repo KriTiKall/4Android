@@ -64,7 +64,7 @@
         android:id="@+id/list_of_possible_translation_change"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:visibility="invisible"
+        android:visibility="visible"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

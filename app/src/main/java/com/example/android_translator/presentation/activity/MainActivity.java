@@ -1,7 +1,12 @@
 package com.example.android_translator.presentation.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,5 +50,23 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         render.setData(data);
         listTranslation.setAdapter(render);
         listTranslation.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuAppend = getMenuInflater();
+        menuAppend.inflate(R.menu.append, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item_append_translation:
+                Intent intent = new Intent(this, AppendActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,9 +1,9 @@
 package com.example.android_translator.domain.usecase;
 
 import com.example.android_translator.domain.essences.PossibleTranslation;
-import com.example.myapplication.domain.essences.PossibleTranslation;
-import io.reactivex.Single;
+import rx.Single;
+
 
 public interface YandexTransletationUseCase {
-    public Single<PossibleTranslation> allTranslation(String text);
+    Single<PossibleTranslation> allTranslation(String text);
 }

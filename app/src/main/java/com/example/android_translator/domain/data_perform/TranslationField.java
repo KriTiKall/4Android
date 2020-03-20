@@ -14,14 +14,18 @@ public class TranslationField {
     @SerializedName("text")
     private String translation;
 
-    public TranslationField(int id, String word, String translations) {
+    public TranslationField(int id, String word, String translation) {
         this.id = id;
         this.word = word;
-        this.translation = translations;
+        this.translation = translation;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTranslation() {
