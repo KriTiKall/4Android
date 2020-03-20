@@ -8,6 +8,6 @@ import java.util.List;
 import rx.Observable;
 
 public interface AppendView extends MvpView {
-    Observable<CharSequence> getTextFromEditText();
+    //Observable<CharSequence> getTextFromEditText();
     void initRecycler(List<String> data);
 }

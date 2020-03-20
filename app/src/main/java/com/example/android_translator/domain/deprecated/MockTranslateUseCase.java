@@ -8,6 +8,6 @@ public class MockTranslateUseCase implements TranslateUseCase {
 
     @Override
     public TranslationField translate(String word) {
-        return new TranslationField(123, word, Collections.singletonList(word + ":translate"));
+        return new TranslationField(123, word, word + ":translate");
     }
 }

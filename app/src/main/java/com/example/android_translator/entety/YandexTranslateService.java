@@ -2,7 +2,7 @@ package com.example.android_translator.entety;
 
 import com.example.android_translator.entety.essences.YandexTranslationJson;
 
-import io.reactivex.Single;
+import rx.Single;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 

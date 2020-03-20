@@ -16,7 +16,7 @@ public class TranslationFieldMockItems implements MockItems<TranslationField> {
     public List<TranslationField> getList(int length) {
         List<TranslationField> list = new ArrayList();
         for (int i = 0; i < length; i++)
-            list.add(new TranslationField(i, "concurrency", Arrays.asList("совпадения")));
+            list.add(new TranslationField(i, "concurrency", "совпадения"));
         return list;
     }
 }

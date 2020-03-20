@@ -3,7 +3,7 @@ package com.example.android_translator.entety.repository;
 import com.example.android_translator.entety.Core;
 import com.example.android_translator.entety.YandexTranslateService;
 import com.example.android_translator.entety.essences.YandexTranslationJson;
-import io.reactivex.Single;
+import rx.Single;
 
 public class YandexTranslationRepository implements Repository<YandexTranslationJson> {
 

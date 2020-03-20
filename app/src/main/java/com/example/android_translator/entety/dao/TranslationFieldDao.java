@@ -1,5 +1,6 @@
 package com.example.android_translator.entety.dao;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -9,7 +10,7 @@ import com.example.android_translator.domain.data_perform.TranslationField;
 
 import java.util.List;
 
-@androidx.room.Dao
+@Dao
 public interface TranslationFieldDao {
 
     @Query("SELECT * FROM translationField")

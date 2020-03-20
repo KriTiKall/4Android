@@ -58,10 +58,10 @@ public class AppendActivity extends MvpAppCompatActivity implements AppendView {
         ButterKnife.bind(this);
     }
 
-    @Override
-    public Observable<CharSequence> getTextFromEditText() {
-        return RxTextView.textChanges(word).debounce(500, TimeUnit.MILLISECONDS);
-    }
+//    @Override
+//    public Observable<CharSequence> getTextFromEditText() {
+//        return RxTextView.textChanges(word).debounce(500, TimeUnit.MILLISECONDS);
+//    }
 
     @Override
     public void initRecycler(List<String> data) {

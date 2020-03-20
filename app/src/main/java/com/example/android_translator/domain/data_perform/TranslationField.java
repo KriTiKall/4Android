@@ -8,10 +8,9 @@ import com.google.gson.annotations.SerializedName;
 @Entity
 public class TranslationField {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String word;
-    @SerializedName("text")
     private String translation;
 
     public TranslationField(int id, String word, String translation) {
