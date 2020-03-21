@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +26,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends MvpAppCompatActivity implements MainView {
 
@@ -68,5 +72,12 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick({R.id.main_word, R.id.main_translation})
+    public void appendNewWord(View v){
+        Intent goToChange = new Intent(this, ChangeActivity.class);
+        goToChange.putExtra("text", ((TextView)findViewById(R.id.main_word)).getText().toString());
+        startActivity(goToChange);
     }
 }

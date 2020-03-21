@@ -41,7 +41,7 @@ public class PossibleTranslationRender extends RecyclerView.Adapter<PossibleTran
     }
 
     public class PossibleTranslationViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.word)
+        @BindView(R.id.possible_word)
         TextView possibleTranslation;
 
         public PossibleTranslationViewHolder(@NonNull View itemView) {

@@ -1,21 +1,30 @@
 package com.example.android_translator.presentation.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.android_translator.R;
+import com.example.android_translator.app.App;
+import com.example.android_translator.domain.data_perform.TranslationField;
 import com.example.android_translator.presentation.presenters.ChangeActivityPresenter;
+import com.example.android_translator.presentation.render.ChangeTranslationRender;
 import com.example.android_translator.presentation.view.ChangeView;
+
+import java.util.List;
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ChangeActivity extends MvpAppCompatActivity implements ChangeView {
 
@@ -43,5 +52,26 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change);
         ButterKnife.bind(this);
+
+        Bundle arguments = getIntent().getExtras();
+        word.setText(arguments.get("text").toString());
+    }
+
+    @Override
+    public void initRecycler(List<String> data) {
+        ChangeTranslationRender render = new ChangeTranslationRender();
+        render.setData(data);
+        listChange.setAdapter(render);
+        listChange.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @OnClick(R.id.Change_word)
+    public void appendNewWord(View v){
+        App.getInstance()
+                .getAppDataBase()
+                .daoAccess()
+                .update(new TranslationField(UUID.randomUUID().hashCode(),
+                        word.getText().toString(),
+                        ((EditText)v).getText().toString()));
     }
 }

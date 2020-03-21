@@ -19,4 +19,9 @@ public class TranslationFieldMockItems implements MockItems<TranslationField> {
             list.add(new TranslationField(i, "concurrency", "совпадения"));
         return list;
     }
+
+    @Override
+    public List<TranslationField> getAll() {
+        return null;
+    }
 }

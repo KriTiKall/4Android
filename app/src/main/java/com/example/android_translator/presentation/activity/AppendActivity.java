@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,17 +13,21 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.android_translator.R;
+import com.example.android_translator.app.App;
 import com.example.android_translator.domain.data_perform.TranslationField;
+import com.example.android_translator.entety.repository.DataBaseRepository;
 import com.example.android_translator.presentation.presenters.AppendActivityPresenter;
 import com.example.android_translator.presentation.render.PossibleTranslationRender;
 import com.example.android_translator.presentation.view.AppendView;
 import com.jakewharton.rxbinding.widget.RxTextView;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Observable;
 
 /**
@@ -69,5 +74,15 @@ public class AppendActivity extends MvpAppCompatActivity implements AppendView {
         render.setData(data);
         listAppend.setAdapter(render);
         listAppend.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @OnClick(R.id.possible_word)
+    public void appendNewWord(View v){
+        App.getInstance()
+                .getAppDataBase()
+                .daoAccess()
+                .insert(new TranslationField(UUID.randomUUID().hashCode(),
+                        word.getText().toString(),
+                        ((EditText)v).getText().toString()));
     }
 }

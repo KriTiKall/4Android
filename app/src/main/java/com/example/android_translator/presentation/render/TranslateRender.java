@@ -45,9 +45,9 @@ public class TranslateRender extends RecyclerView.Adapter<TranslateRender.Transl
     }
 
     public class TranslateViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.word)
+        @BindView(R.id.main_word)
         TextView word;
-        @BindView(R.id.translation)
+        @BindView(R.id.main_translation)
         TextView translation;
 
         public TranslateViewHolder(@NonNull View itemView) {

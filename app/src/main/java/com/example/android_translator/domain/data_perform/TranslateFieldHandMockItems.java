@@ -20,4 +20,9 @@ public class TranslateFieldHandMockItems implements MockItems<TranslationField> 
             list.add(new TranslationField(i, word[i % 5], translate[i % 5]));
         return list;
     }
+
+    @Override
+    public List<TranslationField> getAll() {
+        return null;
+    }
 }

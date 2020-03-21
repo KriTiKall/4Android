@@ -5,4 +5,5 @@ import java.util.List;
 public interface MockItems<T> {
 
     List<T> getList(int length);
+    List<T> getAll();
 }
