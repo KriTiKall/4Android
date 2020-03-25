@@ -1,27 +1,35 @@
 package com.example.android_translator.presentation.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.example.android_translator.R;
+import com.example.android_translator.domain.data_perform.TranslationField;
+import com.example.android_translator.presentation.presenters.MainActivityPresenter;
+import com.example.android_translator.presentation.render.TranslateRender;
+import com.example.android_translator.presentation.view.MainView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import com.example.android_translator.R;
-import com.example.android_translator.domain.data_perform.TranslationField;
-import com.example.android_translator.domain.MockTranslateUseCase;
-import com.example.android_translator.presentation.presenters.MainActivityPresenter;
-import com.example.android_translator.presentation.render.MainView;
-import com.example.android_translator.presentation.render.TranslateRender;
+import butterknife.OnClick;
 
 public class MainActivity extends MvpAppCompatActivity implements MainView {
+
     @BindView(R.id.main_recycler)
     RecyclerView listTranslation;
 
@@ -30,7 +38,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     @ProvidePresenter
     MainActivityPresenter providePresent() {
-        return new MainActivityPresenter(new MockTranslateUseCase());
+        return new MainActivityPresenter();
     }
 
     @Override
@@ -46,5 +54,30 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         render.setData(data);
         listTranslation.setAdapter(render);
         listTranslation.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuAppend = getMenuInflater();
+        menuAppend.inflate(R.menu.append, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item_append_translation:
+                Intent intent = new Intent(this, AppendActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick({R.id.main_word, R.id.main_translation})
+    public void appendNewWord(View v){
+        Intent goToChange = new Intent(this, ChangeActivity.class);
+        goToChange.putExtra("text", ((TextView)findViewById(R.id.main_word)).getText().toString());
+        startActivity(goToChange);
     }
 }
