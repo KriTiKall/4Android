@@ -32,10 +32,6 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView {
     TextView header;
     @BindView(R.id.edit_text_word_change)
     EditText word;
-    @BindView(R.id.edit_text_translate_change)
-    EditText translate;
-    @BindView(R.id.button_change)
-    Button buttonChange;
     @BindView(R.id.list_of_possible_translation_change)
     RecyclerView listChange;
 
@@ -65,8 +61,7 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView {
         listChange.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    @OnClick(R.id.Change_word)
-    public void appendNewWord(View v){
+    public void changeWord(View v){
         App.getInstance()
                 .getAppDataBase()
                 .daoAccess()

@@ -74,10 +74,4 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick({R.id.main_word, R.id.main_translation})
-    public void appendNewWord(View v){
-        Intent goToChange = new Intent(this, ChangeActivity.class);
-        goToChange.putExtra("text", ((TextView)findViewById(R.id.main_word)).getText().toString());
-        startActivity(goToChange);
-    }
 }
