@@ -73,5 +73,4 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

@@ -43,6 +43,8 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView {
         return new ChangeActivityPresenter();
     }
 
+    private String wordString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,23 +52,15 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView {
         ButterKnife.bind(this);
 
         Bundle arguments = getIntent().getExtras();
-        word.setText(arguments.get("text").toString());
+        wordString = arguments.get("text").toString();
+        word.setText(wordString);
     }
 
     @Override
     public void initRecycler(List<String> data) {
-        ChangeTranslationRender render = new ChangeTranslationRender();
+        ChangeTranslationRender render = new ChangeTranslationRender(wordString);
         render.setData(data);
         listChange.setAdapter(render);
         listChange.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    public void changeWord(View v){
-        App.getInstance()
-                .getAppDataBase()
-                .daoAccess()
-                .update(new TranslationField(UUID.randomUUID().hashCode(),
-                        word.getText().toString(),
-                        ((EditText)v).getText().toString()));
     }
 }
