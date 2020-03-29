@@ -1,12 +1,15 @@
 package com.example.android_translator.presentation.activity;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -16,21 +19,20 @@ import com.example.android_translator.presentation.presenters.AppendActivityPres
 import com.example.android_translator.presentation.presenters.TextChangeHandler;
 import com.example.android_translator.presentation.render.PossibleTranslationRender;
 import com.example.android_translator.presentation.view.AppendView;
-import com.jakewharton.rxbinding.widget.RxTextView;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.Observable;
+
+import io.reactivex.Observable;
 
 /**
  * RxBind
  * cool link arch -> https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started
  */
 
-public class AppendActivity extends MvpAppCompatActivity implements AppendView {
+public class AppendActivity extends MvpAppCompatActivity implements AppendView, TextView.OnEditorActionListener {
 
     @BindView(R.id.label_header_append)
     TextView header;
@@ -54,12 +56,13 @@ public class AppendActivity extends MvpAppCompatActivity implements AppendView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_append);
         ButterKnife.bind(this);
-        Log.d("AppendActivity", "********************************onStart()");
+
+        word.setOnEditorActionListener(this);
     }
 
     @Override
     public void setTextHandler(TextChangeHandler textHandler) {
-        textHandler.onChange(RxTextView.textChanges(word).debounce(500, TimeUnit.MILLISECONDS));
+        textHandler.onChange(Observable.just(word.getText().toString()));
     }
 
     @Override
@@ -70,5 +73,21 @@ public class AppendActivity extends MvpAppCompatActivity implements AppendView {
 
         listAppend.setAdapter(render);
         listAppend.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_SEND) {
+            String strOfWord = word.getText().toString();
+
+            Log.w("AppendActivity", "________________________________________\'" + strOfWord + "\'");
+
+            if (strOfWord == null || strOfWord.equals(""))
+                v.getContext().startActivity(new Intent(v.getContext(), MainActivity.class));
+
+            setTextHandler(presenter.getTextHandler());
+            return true;
+        }
+        return false;
     }
 }

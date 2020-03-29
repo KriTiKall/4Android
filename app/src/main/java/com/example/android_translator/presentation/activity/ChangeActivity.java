@@ -52,6 +52,7 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView, 
     private String wordString;
     private String firstWord;
     private String translation;
+    private int idField;
 
     private TranslationFieldDao database = App.getInstance()
             .getAppDataBase()
@@ -72,6 +73,8 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView, 
         translation = fromMain
                 .get("t_text")
                 .toString();
+        idField = fromMain
+                .getInt("id");
         firstWord = wordString;
         word.setText(wordString);
 
@@ -98,12 +101,9 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView, 
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if(actionId == EditorInfo.IME_ACTION_SEND){
             String strOfWord = word.getText().toString();
-            Log.w("ChangeActivity", "________________________________________\'" + strOfWord + "\'");
+            Log.w("ChangeActivity", "________________________________________\'" + strOfWord + "\'+ id: " + idField);
             if(strOfWord == null || strOfWord.equals("")){
-                database.delete(new TranslationField(
-                        firstWord,
-                        translation
-                ));
+                database.deleteById(idField);
                 v.getContext().startActivity(new Intent(v.getContext(), MainActivity.class));
             }
             return true;

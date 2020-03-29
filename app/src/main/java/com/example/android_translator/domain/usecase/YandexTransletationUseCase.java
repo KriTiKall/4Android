@@ -6,5 +6,5 @@ import retrofit2.Call;
 
 
 public interface YandexTransletationUseCase {
-    Call<PossibleTranslation> allTranslation(String text);
+    PossibleTranslation allTranslation(String text);
 }

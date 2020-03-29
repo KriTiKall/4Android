@@ -30,28 +30,28 @@ public class ChangeActivityPresenter extends MvpPresenter<ChangeView> {
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
 
-        getViewState().setTextHandler((charSequence) -> {
-            charSequence.observeOn(Schedulers.io())
-                    .map((text) -> yandexTranslationUseCaseImp.allTranslation(text.toString()))
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe((data) -> {
-                        data.enqueue(new Callback<PossibleTranslation>() {
-                            @Override
-                            public void onResponse(Call<PossibleTranslation> call, Response<PossibleTranslation> response) {
-                                if(!response.isSuccessful()){
-                                    getViewState().initRecycler(Arrays.asList("Code: " + response.code()));
-                                    Log.e("ChangePresenter","_____________Code: " + response.code());
-                                    return;
-                                }
-                                getViewState().initRecycler(response.body().getTranslations());
-                            }
-
-                            @Override
-                            public void onFailure(Call<PossibleTranslation> call, Throwable t) {
-                                Log.e("ChangePresenter",t.getMessage());
-                            }
-                        });
-                    }, (errData) -> Log.e("IN obs change", "_____________" + errData.getMessage()));
-        });
+//        getViewState().setTextHandler((charSequence) -> {
+//            charSequence.observeOn(Schedulers.io())
+//                    .map((text) -> yandexTranslationUseCaseImp.allTranslation(text.toString()))
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe((data) -> {
+//                        data.enqueue(new Callback<PossibleTranslation>() {
+//                            @Override
+//                            public void onResponse(Call<PossibleTranslation> call, Response<PossibleTranslation> response) {
+//                                if(!response.isSuccessful()){
+//                                    getViewState().initRecycler(Arrays.asList("Code: " + response.code()));
+//                                    Log.e("ChangePresenter","_____________Code: " + response.code());
+//                                    return;
+//                                }
+//                                getViewState().initRecycler(response.body().getTranslations());
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<PossibleTranslation> call, Throwable t) {
+//                                Log.e("ChangePresenter",t.getMessage());
+//                            }
+//                        });
+//                    }, (errData) -> Log.e("IN obs change", "_____________" + errData.getMessage()));
+//        });
     }
 }

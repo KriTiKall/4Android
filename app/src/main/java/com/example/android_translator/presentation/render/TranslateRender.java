@@ -1,6 +1,7 @@
 package com.example.android_translator.presentation.render;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,8 @@ public class TranslateRender extends RecyclerView.Adapter<TranslateRender.Transl
         @BindView(R.id.main_translation)
         TextView translation;
 
+        private int id;
+
         public TranslateViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -61,6 +64,8 @@ public class TranslateRender extends RecyclerView.Adapter<TranslateRender.Transl
         public void bind(TranslationField translate) {
             word.setText(translate.getWord());
             translation.setText(translate.getTranslation());
+            id = translate.getId();
+            Log.d("TranslationRender", "________________id: " + id );
         }
 
         @Override
@@ -68,6 +73,7 @@ public class TranslateRender extends RecyclerView.Adapter<TranslateRender.Transl
             Intent intent = new Intent(v.getContext(), ChangeActivity.class);
             intent.putExtra("text", word.getText().toString());
             intent.putExtra("t_text", translation.getText().toString());
+            intent.putExtra("id", id);
             v.getContext().startActivity(intent);
         }
     }

@@ -19,6 +19,9 @@ public interface TranslationFieldDao {
     @Query("DELETE FROM translationField")
     void deleteAll();
 
+    @Query("DELETE FROM translationfield WHERE id=:id")
+    void deleteById(int id);
+
     @Insert
     void insert(TranslationField translation);
 

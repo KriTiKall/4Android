@@ -5,6 +5,4 @@ import rx.Single;
 
 public interface Repository<T> {
     public Call<T> all(String text);
-
-
 }
