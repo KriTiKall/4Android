@@ -2,7 +2,7 @@ package com.example.android_translator.entety;
 
 import com.example.android_translator.entety.essences.YandexTranslationJson;
 
-import rx.Single;
+import retrofit2.Call;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -12,5 +12,5 @@ public interface YandexTranslateService {
     String LANG_EN_RU = "en-ru";
 
     @POST("translate?key=" + API_KEY + "&lang=" + LANG_EN_RU + "&options=0")
-    public Single<YandexTranslationJson> getTranslation(@Query("text") String text);
+    public Call<YandexTranslationJson> getTranslation(@Query("text") String text);
 }

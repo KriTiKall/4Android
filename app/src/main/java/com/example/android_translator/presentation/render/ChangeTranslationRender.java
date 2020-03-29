@@ -1,5 +1,7 @@
 package com.example.android_translator.presentation.render;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android_translator.R;
 import com.example.android_translator.app.App;
 import com.example.android_translator.domain.data_perform.TranslationField;
+import com.example.android_translator.entety.dao.TranslationFieldDao;
+import com.example.android_translator.presentation.activity.MainActivity;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,6 +29,12 @@ public class ChangeTranslationRender  extends RecyclerView.Adapter<ChangeTransla
 
     private String wordString;
 
+    private ViewGroup parent;
+
+    private TranslationFieldDao database = App.getInstance()
+            .getAppDataBase()
+            .daoAccess();
+
     public ChangeTranslationRender(String word) {
         this.wordString = word;
     }
@@ -32,6 +42,7 @@ public class ChangeTranslationRender  extends RecyclerView.Adapter<ChangeTransla
     @NonNull
     @Override
     public ChangeTranslationRender.ChangeTranslationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        this.parent = parent;
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.change_translation_layout, parent, false);
 
@@ -69,12 +80,15 @@ public class ChangeTranslationRender  extends RecyclerView.Adapter<ChangeTransla
 
         @Override
         public void onClick(View v) {
-            App.getInstance()
-                    .getAppDataBase()
-                    .daoAccess()
-                    .update(new TranslationField(UUID.randomUUID().hashCode(),
-                            wordString,
-                            possibleTranslation.getText().toString()));
+            Log.d("ChangeRender", "--------------word: " + wordString + ", translate: " + possibleTranslation.getText().toString());
+
+            database.update(new TranslationField(
+                                wordString,
+                                possibleTranslation.getText().toString()
+            ));
+
+            Intent backToMain = new Intent(parent.getContext(), MainActivity.class);
+            parent.getContext().startActivity(backToMain);
         }
     }
 }

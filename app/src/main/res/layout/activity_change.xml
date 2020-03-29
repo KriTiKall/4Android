@@ -27,10 +27,12 @@
         android:inputType="textPersonName"
         android:layout_marginTop="150dp"
         android:hint="word"
+        android:imeOptions="actionSend"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_of_possible_translation_change"

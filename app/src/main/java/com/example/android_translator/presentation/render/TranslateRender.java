@@ -67,6 +67,7 @@ public class TranslateRender extends RecyclerView.Adapter<TranslateRender.Transl
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), ChangeActivity.class);
             intent.putExtra("text", word.getText().toString());
+            intent.putExtra("t_text", translation.getText().toString());
             v.getContext().startActivity(intent);
         }
     }

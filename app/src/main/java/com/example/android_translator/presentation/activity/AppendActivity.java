@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -12,13 +13,17 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.android_translator.R;
 import com.example.android_translator.presentation.presenters.AppendActivityPresenter;
+import com.example.android_translator.presentation.presenters.TextChangeHandler;
 import com.example.android_translator.presentation.render.PossibleTranslationRender;
 import com.example.android_translator.presentation.view.AppendView;
+import com.jakewharton.rxbinding.widget.RxTextView;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Observable;
 
 /**
  * RxBind
@@ -49,17 +54,20 @@ public class AppendActivity extends MvpAppCompatActivity implements AppendView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_append);
         ButterKnife.bind(this);
+        Log.d("AppendActivity", "********************************onStart()");
     }
 
-//    @Override
-//    public Observable<CharSequence> getTextFromEditText() {
-//        return RxTextView.textChanges(word).debounce(500, TimeUnit.MILLISECONDS);
-//    }
+    @Override
+    public void setTextHandler(TextChangeHandler textHandler) {
+        textHandler.onChange(RxTextView.textChanges(word).debounce(500, TimeUnit.MILLISECONDS));
+    }
 
     @Override
     public void initRecycler(List<String> data) {
+        wordString = word.getText().toString();
         PossibleTranslationRender render = new PossibleTranslationRender(wordString);
         render.setData(data);
+
         listAppend.setAdapter(render);
         listAppend.setLayoutManager(new LinearLayoutManager(this));
     }

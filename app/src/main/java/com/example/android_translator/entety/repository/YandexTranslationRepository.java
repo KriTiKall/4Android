@@ -3,6 +3,8 @@ package com.example.android_translator.entety.repository;
 import com.example.android_translator.entety.Core;
 import com.example.android_translator.entety.YandexTranslateService;
 import com.example.android_translator.entety.essences.YandexTranslationJson;
+
+import retrofit2.Call;
 import rx.Single;
 
 public class YandexTranslationRepository implements Repository<YandexTranslationJson> {
@@ -14,7 +16,7 @@ public class YandexTranslationRepository implements Repository<YandexTranslation
     }
 
     @Override
-    public Single<YandexTranslationJson> all(String text) {
+    public Call<YandexTranslationJson> all(String text) {
         return yandexTranslateService.getTranslation(text);
     }
 }

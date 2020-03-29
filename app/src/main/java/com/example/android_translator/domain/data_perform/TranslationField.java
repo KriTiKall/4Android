@@ -7,14 +7,12 @@ import com.google.gson.annotations.SerializedName;
 
 @Entity
 public class TranslationField {
-
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String word;
     private String translation;
 
-    public TranslationField(int id, String word, String translation) {
-        this.id = id;
+    public TranslationField(String word, String translation) {
         this.word = word;
         this.translation = translation;
     }

@@ -6,6 +6,8 @@ import com.example.android_translator.domain.mappers.YandexTranslationMapper;
 import com.example.android_translator.entety.essences.YandexTranslationJson;
 import com.example.android_translator.entety.repository.Repository;
 import com.example.android_translator.entety.repository.YandexTranslationRepository;
+
+import retrofit2.Call;
 import rx.Single;
 
 public class YandexTranslationUseCaseImp implements YandexTransletationUseCase {
@@ -19,7 +21,8 @@ public class YandexTranslationUseCaseImp implements YandexTransletationUseCase {
     }
 
     @Override
-    public Single<PossibleTranslation> allTranslation(String text) {
-        return repository.all(text).map((e) ->  mapper.map((YandexTranslationJson) e));
+    public Call<PossibleTranslation> allTranslation(String text) {
+        return repository.all(text);
+        //return repository.all(text).map((e) ->  mapper.map((YandexTranslationJson) e));
     }
 }

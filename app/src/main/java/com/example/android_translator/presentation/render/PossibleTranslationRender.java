@@ -1,5 +1,7 @@
 package com.example.android_translator.presentation.render;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import butterknife.ButterKnife;
 import com.example.android_translator.R;
 import com.example.android_translator.app.App;
 import com.example.android_translator.domain.data_perform.TranslationField;
+import com.example.android_translator.entety.dao.TranslationFieldDao;
+import com.example.android_translator.presentation.activity.MainActivity;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +25,12 @@ public class PossibleTranslationRender extends RecyclerView.Adapter<PossibleTran
 
     private String wordString;
 
+    private ViewGroup parent;
+
+    private TranslationFieldDao database = App.getInstance()
+            .getAppDataBase()
+            .daoAccess();
+
     public PossibleTranslationRender(String wordString) {
         this.wordString = wordString;
     }
@@ -28,6 +38,7 @@ public class PossibleTranslationRender extends RecyclerView.Adapter<PossibleTran
     @NonNull
     @Override
     public PossibleTranslationRender.PossibleTranslationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        this.parent = parent;
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.possible_translation_layout, parent, false);
 
@@ -66,12 +77,15 @@ public class PossibleTranslationRender extends RecyclerView.Adapter<PossibleTran
 
         @Override
         public void onClick(View v) {
-            App.getInstance()
-                    .getAppDataBase()
-                    .daoAccess()
-                    .insert(new TranslationField(UUID.randomUUID().hashCode(),
+            Log.d("PossibleRender", "--------------word: " + wordString + ", translate: " + possibleTranslation.getText().toString());
+
+            database.insert(new TranslationField(
                             wordString,
-                            possibleTranslation.getText().toString()));
+                            possibleTranslation.getText().toString()
+            ));
+
+            Intent backToMain = new Intent(parent.getContext(), MainActivity.class);
+            parent.getContext().startActivity(backToMain);
         }
     }
 }
