@@ -22,14 +22,6 @@ public class DataBaseRepository {
         return dataBase.daoAccess().getAll();
     }
 
-    public TranslationField getById(long id){
-        return dataBase.daoAccess().getById(id);
-    }
-
-    public List<Integer> getAllId(){
-        return dataBase.daoAccess().getAllId();
-    }
-
     public void insert(TranslationField translation){
         dataBase.daoAccess().insert(translation);
     }

@@ -11,6 +11,6 @@
         android:layout_weight="1"
         android:textColor="@color/colorAccent"
         android:autoSizeMaxTextSize="20sp"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
 </LinearLayout>

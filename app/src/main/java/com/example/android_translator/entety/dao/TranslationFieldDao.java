@@ -16,11 +16,11 @@ public interface TranslationFieldDao {
     @Query("SELECT * FROM translationField")
     List<TranslationField> getAll();
 
-    @Query("SELECT * FROM translationField WHERE id = :id")
-    TranslationField getById(long id);
+    @Query("DELETE FROM translationField")
+    void deleteAll();
 
-    @Query("SELECT id FROM translationField")
-    List<Integer> getAllId();
+    @Query("DELETE FROM translationfield WHERE id=:id")
+    void deleteById(int id);
 
     @Insert
     void insert(TranslationField translation);

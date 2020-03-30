@@ -19,18 +19,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_append"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/a_append_button"
-        android:textAllCaps="false"
-        android:layout_marginTop="250dp"
-
-        app:layout_constraintLeft_toLeftOf="@+id/edit_text_word_append"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/edit_text_word_append"
         android:layout_width="wrap_content"
@@ -39,21 +27,7 @@
         android:inputType="textPersonName"
         android:layout_marginTop="150dp"
         android:hint="word"
-
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <EditText
-        android:id="@+id/edit_text_translate_append"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginTop="200dp"
-        android:hint="translation"
-
+        android:imeOptions="actionSend"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -68,6 +42,6 @@
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button_append"
+        app:layout_constraintTop_toTopOf="@+id/edit_text_word_append"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

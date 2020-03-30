@@ -2,6 +2,7 @@ package com.example.android_translator.presentation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +18,9 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.android_translator.R;
+import com.example.android_translator.app.App;
 import com.example.android_translator.domain.data_perform.TranslationField;
+import com.example.android_translator.entety.dao.TranslationFieldDao;
 import com.example.android_translator.presentation.presenters.MainActivityPresenter;
 import com.example.android_translator.presentation.render.TranslateRender;
 import com.example.android_translator.presentation.view.MainView;
@@ -40,6 +43,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     MainActivityPresenter providePresent() {
         return new MainActivityPresenter();
     }
+
+    private TranslationFieldDao database = App.getInstance()
+            .getAppDataBase()
+            .daoAccess();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +79,5 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @OnClick({R.id.main_word, R.id.main_translation})
-    public void appendNewWord(View v){
-        Intent goToChange = new Intent(this, ChangeActivity.class);
-        goToChange.putExtra("text", ((TextView)findViewById(R.id.main_word)).getText().toString());
-        startActivity(goToChange);
     }
 }

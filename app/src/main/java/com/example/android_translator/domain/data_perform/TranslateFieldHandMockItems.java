@@ -17,7 +17,7 @@ public class TranslateFieldHandMockItems implements MockItems<TranslationField> 
     public List<TranslationField> getList(int length) {
         List<TranslationField> list = new ArrayList<>();
         for (int i = 0; i < length; i++)
-            list.add(new TranslationField(i, word[i % 5], translate[i % 5]));
+            list.add(new TranslationField( word[i % 5], translate[i % 5]));
         return list;
     }
 
