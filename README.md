@@ -1,15 +1,3 @@
 # 4Android
 
-
-/**
- * Почитать про View и передачу их + java.until.concarent
- */
-
-//MVVM MVI
-
-// каждой view по презентару
-
-//Room(SqlLite)
-//Retrofit
-//OkHttp
-//RxJava 2
+Это проект я писал во время обученя на курсе Андроид разработки. 

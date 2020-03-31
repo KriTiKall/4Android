@@ -5,7 +5,6 @@ import com.example.android_translator.entety.YandexTranslateService;
 import com.example.android_translator.entety.essences.YandexTranslationJson;
 
 import retrofit2.Call;
-import rx.Single;
 
 public class YandexTranslationRepository implements Repository<YandexTranslationJson> {
 

@@ -44,10 +44,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         return new MainActivityPresenter();
     }
 
-    private TranslationFieldDao database = App.getInstance()
-            .getAppDataBase()
-            .daoAccess();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

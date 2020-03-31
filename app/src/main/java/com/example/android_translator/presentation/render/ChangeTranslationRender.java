@@ -83,8 +83,8 @@ public class ChangeTranslationRender  extends RecyclerView.Adapter<ChangeTransla
             Log.d("ChangeRender", "--------------word: " + wordString + ", translate: " + possibleTranslation.getText().toString());
 
             database.update(new TranslationField(
-                                wordString,
-                                possibleTranslation.getText().toString()
+                    wordString,
+                    possibleTranslation.getText().toString()
             ));
 
             Intent backToMain = new Intent(parent.getContext(), MainActivity.class);

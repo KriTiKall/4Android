@@ -1,9 +1,5 @@
 package com.example.android_translator.entety.repository;
 
-import android.content.Context;
-
-import androidx.room.Room;
-
 import com.example.android_translator.app.App;
 import com.example.android_translator.domain.data_perform.TranslationField;
 import com.example.android_translator.entety.dao.AppDataBase;

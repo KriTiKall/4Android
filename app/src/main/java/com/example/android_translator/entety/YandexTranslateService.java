@@ -7,7 +7,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface YandexTranslateService {
-    String BASE_URL = "https://translate.yandex.net/api/v1.5/tr.json/";
+
     String API_KEY = "trnsl.1.1.20200329T172100Z.5ab51266982ef9bf.baa6b90d958cfb3c70d720e1a237a3768898b33c";
     String LANG_EN_RU = "en-ru";
 

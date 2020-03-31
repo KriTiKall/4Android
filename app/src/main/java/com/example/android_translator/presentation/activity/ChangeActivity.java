@@ -50,13 +50,8 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView, 
     }
 
     private String wordString;
-    private String firstWord;
-    private String translation;
     private int idField;
 
-    private TranslationFieldDao database = App.getInstance()
-            .getAppDataBase()
-            .daoAccess();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +65,9 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView, 
         wordString = fromMain
                 .get("text")
                 .toString();
-        translation = fromMain
-                .get("t_text")
-                .toString();
         idField = fromMain
                 .getInt("id");
-        firstWord = wordString;
+
         word.setText(wordString);
 
         word.setOnEditorActionListener(this);
@@ -102,9 +94,10 @@ public class ChangeActivity extends MvpAppCompatActivity implements ChangeView, 
         if(actionId == EditorInfo.IME_ACTION_SEND){
             String strOfWord = word.getText().toString();
             Log.w("ChangeActivity", "________________________________________\'" + strOfWord + "\'+ id: " + idField);
+
             if(strOfWord == null || strOfWord.equals("")){
-                database.deleteById(idField);
-                v.getContext().startActivity(new Intent(v.getContext(), MainActivity.class));
+                presenter.deleteById(idField);
+                startActivity(new Intent(v.getContext(), MainActivity.class));
             }
             return true;
         }
